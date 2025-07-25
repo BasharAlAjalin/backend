@@ -1,32 +1,15 @@
 package com.lms.backend.service;
 
 import com.lms.backend.model.User;
-import com.lms.backend.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.lms.backend.payload.RegisterRequest;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class UserService {
-
-    @Autowired
-    private UserRepository userRepository;
-
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
-
-    public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);
-    }
-
-    public User createUser(User user) {
-        return userRepository.save(user);
-    }
-
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
-    }
+public interface UserService {
+    User registerUser(RegisterRequest request);
+    List<User> getAllUsers();
+    Optional<User> getUserById(Long id);
+    User createUser(User user);
+    void deleteUser(Long id);
 }

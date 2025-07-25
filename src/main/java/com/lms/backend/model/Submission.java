@@ -2,6 +2,7 @@ package com.lms.backend.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Entity
 public class Submission {
@@ -20,6 +21,8 @@ public class Submission {
 
     private LocalDateTime submittedAt;
 
+    @Transient
+    private Map<Long, String> answers; 
     public Submission() {}
 
     public Submission(Long userId, Quiz quiz, Integer score) {
@@ -29,7 +32,7 @@ public class Submission {
         this.submittedAt = LocalDateTime.now();
     }
 
-    // Getters and Setters
+   
 
     public Long getId() {
         return id;
@@ -65,5 +68,13 @@ public class Submission {
 
     public void setSubmittedAt(LocalDateTime submittedAt) {
         this.submittedAt = submittedAt;
+    }
+
+    public Map<Long, String> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Map<Long, String> answers) {
+        this.answers = answers;
     }
 }

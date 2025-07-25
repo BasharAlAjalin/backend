@@ -3,87 +3,79 @@ package com.lms.backend.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "questions")
 public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String text;
-    private String optionA;
-    private String optionB;
-    private String optionC;
-    private String optionD;
-    private String correctOption;
+    private String questionText;
+
+    private String option1;
+    private String option2;
+    private String option3;
+    private String option4;
+
+    private String correctAnswer;
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
-    public Question() {
-    }
+    public Question() {}
 
-    public Question(String text, String optionA, String optionB, String optionC, String optionD, String correctOption, Quiz quiz) {
-        this.text = text;
-        this.optionA = optionA;
-        this.optionB = optionB;
-        this.optionC = optionC;
-        this.optionD = optionD;
-        this.correctOption = correctOption;
-        this.quiz = quiz;
-    }
+    // Getters and Setters
 
     public Long getId() {
         return id;
     }
 
-    public String getText() {
-        return text;
+    public String getQuestionText() {
+        return questionText;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
     }
 
-    public String getOptionA() {
-        return optionA;
+    public String getOption1() {
+        return option1;
     }
 
-    public void setOptionA(String optionA) {
-        this.optionA = optionA;
+    public void setOption1(String option1) {
+        this.option1 = option1;
     }
 
-    public String getOptionB() {
-        return optionB;
+    public String getOption2() {
+        return option2;
     }
 
-    public void setOptionB(String optionB) {
-        this.optionB = optionB;
+    public void setOption2(String option2) {
+        this.option2 = option2;
     }
 
-    public String getOptionC() {
-        return optionC;
+    public String getOption3() {
+        return option3;
     }
 
-    public void setOptionC(String optionC) {
-        this.optionC = optionC;
+    public void setOption3(String option3) {
+        this.option3 = option3;
     }
 
-    public String getOptionD() {
-        return optionD;
+    public String getOption4() {
+        return option4;
     }
 
-    public void setOptionD(String optionD) {
-        this.optionD = optionD;
+    public void setOption4(String option4) {
+        this.option4 = option4;
     }
 
-    public String getCorrectOption() {
-        return correctOption;
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
 
-    public void setCorrectOption(String correctOption) {
-        this.correctOption = correctOption;
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
     public Quiz getQuiz() {

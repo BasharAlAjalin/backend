@@ -27,8 +27,13 @@ public class QuestionController {
         return questionService.getQuestionsByQuiz(quizId);
     }
 
-    @PostMapping
-    public Question createQuestion(@RequestBody Question question) {
-        return questionService.createQuestion(question);
+    @PostMapping("/quiz/{quizId}")
+    public Question addQuestionToQuiz(@PathVariable Long quizId, @RequestBody Question question) {
+        return questionService.addQuestionToQuiz(quizId, question);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteQuestion(@PathVariable Long id) {
+        questionService.deleteQuestion(id);
     }
 }

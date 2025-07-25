@@ -25,9 +25,14 @@ public class QuizController {
         return quizService.getQuizById(id);
     }
 
-    @PostMapping
-    public Quiz createQuiz(@RequestBody Quiz quiz) {
-        return quizService.createQuiz(quiz);
+    @PostMapping("/course/{courseId}")
+    public Quiz createQuizForCourse(@PathVariable Long courseId, @RequestBody Quiz quiz) {
+        return quizService.createQuiz(courseId, quiz);
+    }
+
+    @GetMapping("/course/{courseId}")
+    public List<Quiz> getQuizzesByCourse(@PathVariable Long courseId) {
+        return quizService.getQuizzesByCourseId(courseId);
     }
 
     @DeleteMapping("/{id}")
